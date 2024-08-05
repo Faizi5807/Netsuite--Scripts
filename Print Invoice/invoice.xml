@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+  <head>
+    <style>
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      h1 {
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .header {
+        background-color: #C8C8C8;
+      }
+      .company-info {
+        text-align: left;
+        font-size: 10pt;
+      }
+      .company-logo {
+        height:20px;
+        width:20px;
+      }
+      td, th {
+        border: 1px solid black;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sales Order Receipt</h1>
+   <table class="header" style="width: 100%;">
+                    <tr>
+                        <td rowspan="3">
+                            <#if companyInformation.logoUrl?length !=0><img src="${companyInformation.logoUrl}"
+                                    style=" margin: 7px; width: 170px; height: 85px;" /> </#if> <span
+                                class="nameandaddress">${companyInformation.companyName}</span><br /><span
+                                class="nameandaddress">${companyInformation.addressText}</span>
+                        </td>
+                     
+                    </tr>
+                </table>
+    <table class="table">
+      <tr>
+        <th>Field</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td class="header">Order No.</td>
+        <td align="center">
+          <#if record.tranid?is_string>
+            ${record.tranid}
+          <#else>
+            <!-- Handle case when it's not a string -->
+            N/A
+          </#if>
+        </td>
+      </tr>
+      <tr>
+        <td class="header">Date</td>
+        <td align="center">
+          ${record.trandate}
+        </td>
+      </tr>
+      <tr>
+        <td class="header">Subsidiary</td>
+        <td align="center">
+          <#if record.subsidiary?is_string>
+            ${record.subsidiary}
+          <#else>
+            <!-- Handle case when it's not a string -->
+            N/A
+          </#if>
+        </td>
+      </tr>
+    </table>
+    <br /><br /><br />
+    <table class="table">
+      <tr>
+        <th>Item Name</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Amount</th>
+      </tr>
+      <#list record.item as item>
+      <tr>
+        <td align="center">
+          ${item.item}
+        </td>
+        <td align="center">
+          ${item.description}
+        </td>
+        <td align="center">
+          ${item.quantity}
+        </td>
+        <td align="center">
+          ${item.amount}
+        </td>
+      </tr>
+      </#list>
+    </table>
+  </body>
+</pdf>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>XML with Embedded HTML</title>
+</head>
+<body>
+  <h1>Hello, XML with Embedded HTML!</h1>
+  <p>This is an example of embedding HTML markup within an XML document.</p>
+  <div>
+    <p>This HTML content is within a div element.</p>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+  </div>
+</body>
+</html>
